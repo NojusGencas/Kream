@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="360" viewBox="0 0 300 360" fill="none">
+  <defs>
+    <linearGradient id="shadow" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#000" stop-opacity="0.15" />
+      <stop offset="1" stop-color="#000" stop-opacity="0" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="300" height="360" fill="#FEF9F3" rx="30" />
+  
+  <!-- Shadow at bottom -->
+  <ellipse cx="150" cy="320" rx="80" ry="20" fill="url(#shadow)" />
+  
+  <!-- Candy 1 (red lollipop) -->
+  <circle cx="80" cy="140" r="25" fill="#E63946" />
+  <rect x="75" y="165" width="10" height="40" rx="5" fill="#8B5A3C" />
+  <circle cx="80" cy="135" r="5" fill="#FFD166" opacity="0.6" />
+  
+  <!-- Candy 2 (yellow/orange candy) -->
+  <rect x="130" y="100" width="50" height="50" rx="8" fill="#FFD166" />
+  <circle cx="145" cy="115" r="4" fill="#FFA500" />
+  <circle cx="160" cy="120" r="4" fill="#FFA500" />
+  <circle cx="150" cy="135" r="4" fill="#FFA500" />
+  
+  <!-- Candy 3 (pink/magenta) -->
+  <circle cx="200" cy="160" r="22" fill="#D946EF" />
+  <path d="M 185 160 Q 200 145 215 160" stroke="#F472B6" stroke-width="2" fill="none" />
+  <circle cx="200" cy="155" r="3" fill="#FFF" opacity="0.7" />
+  
+  <!-- Candy 4 (blue wrapped) -->
+  <rect x="110" y="200" width="35" height="28" rx="6" fill="#3B82F6" />
+  <ellipse cx="127.5" cy="200" rx="20" ry="8" fill="#60A5FA" opacity="0.6" />
+  
+  <!-- Candy 5 (green) -->
+  <circle cx="180" cy="240" r="20" fill="#10B981" />
+  <path d="M 165 240 Q 180 230 195 240 Q 180 250 165 240" stroke="#34D399" stroke-width="1.5" fill="none" />
+  
+  <!-- Candy 6 (orange) -->
+  <rect x="70" y="240" width="28" height="28" rx="4" fill="#F97316" />
+  <circle cx="84" cy="254" r="3" fill="#FFF" opacity="0.7" />
+</svg>

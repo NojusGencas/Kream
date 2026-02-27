@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="360" viewBox="0 0 300 360" fill="none">
+  <defs>
+    <linearGradient id="shadow" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#000" stop-opacity="0.15" />
+      <stop offset="1" stop-color="#000" stop-opacity="0" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="300" height="360" fill="#FEF9F3" rx="30" />
+  
+  <!-- Shadow at bottom -->
+  <ellipse cx="150" cy="320" rx="80" ry="20" fill="url(#shadow)" />
+  
+  <!-- Pie crust -->
+  <ellipse cx="150" cy="200" rx="90" ry="35" fill="#D2A679" />
+  
+  <!-- Pie filling (darker) -->
+  <ellipse cx="150" cy="190" rx="85" ry="30" fill="#C4845F" />
+  
+  <!-- Pie crust ridges -->
+  <path d="M 65 200 Q 70 195 75 200 M 85 200 Q 90 195 95 200 M 105 200 Q 110 195 115 200 M 125 200 Q 130 195 135 200 M 145 200 Q 150 195 155 200 M 165 200 Q 170 195 175 200 M 185 200 Q 190 195 195 200 M 205 200 Q 210 195 215 200 M 225 200 Q 230 195 235 200" stroke="#A68F6F" stroke-width="2" fill="none" />
+  
+  <!-- Slice perspective line -->
+  <line x1="150" y1="160" x2="180" y2="225" stroke="#A68F6F" stroke-width="1" opacity="0.6" />
+  
+  <!-- Whipped cream dollop -->
+  <path d="M 120 155 Q 115 140 125 130 Q 130 140 135 150 Q 128 148 120 155" fill="#FFFAF0" />
+  
+  <!-- Cherry on top -->
+  <circle cx="128" cy="128" r="8" fill="#E63946" />
+  <g transform="translate(128, 120)">
+    <ellipse cx="-3" cy="0" rx="2" ry="4" fill="#2D6A4F" />
+    <ellipse cx="3" cy="0" rx="2" ry="4" fill="#2D6A4F" />
+  </g>
+  
+  <!-- Additional whipped cream accent -->
+  <path d="M 170 160 Q 165 145 175 135 Q 180 145 185 155 Q 178 153 170 160" fill="#FFFAF0" />
+</svg>

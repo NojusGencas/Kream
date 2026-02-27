@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" fill="none">
+  <g fill="none" stroke="#111827" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <!-- chef hat outline -->
+    <path d="M12 34c-6-6 2-16 10-14 4 1 6 4 10 6 4-2 6-5 10-6 8-2 16 8 10 14"/>
+    <path d="M14 40c0 6 6 10 18 10s18-4 18-10" />
+    <!-- moustache -->
+    <path d="M24 46c-2 2-6 2-8 0s2-4 6-4" />
+    <path d="M40 46c2 2 6 2 8 0s-2-4-6-4" />
+  </g>
+</svg>

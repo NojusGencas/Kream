@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="360" viewBox="0 0 300 360" fill="none">
+  <defs>
+    <linearGradient id="shadow" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#000" stop-opacity="0.15" />
+      <stop offset="1" stop-color="#000" stop-opacity="0" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="300" height="360" fill="#FEF9F3" rx="30" />
+  
+  <!-- Shadow at bottom -->
+  <ellipse cx="150" cy="320" rx="80" ry="20" fill="url(#shadow)" />
+  
+  <!-- Pie crust (apple pie) -->
+  <ellipse cx="150" cy="210" rx="100" ry="40" fill="#D2A679" />
+  
+  <!-- Pie filling (apple brown) -->
+  <ellipse cx="150" cy="200" rx="95" ry="35" fill="#A0673B" />
+  
+  <!-- Lattice pattern -->
+  <line x1="70" y1="180" x2="230" y2="220" stroke="#C4935F" stroke-width="2" opacity="0.7" />
+  <line x1="75" y1="165" x2="225" y2="235" stroke="#C4935F" stroke-width="2" opacity="0.7" />
+  <line x1="230" y1="180" x2="70" y2="220" stroke="#C4935F" stroke-width="2" opacity="0.7" />
+  <line x1="225" y1="165" x2="75" y2="235" stroke="#C4935F" stroke-width="2" opacity="0.7" />
+  
+  <!-- Cinnamon accent -->
+  <circle cx="140" cy="190" r="15" fill="#8B4513" opacity="0.3" />
+  <circle cx="170" cy="205" r="12" fill="#8B4513" opacity="0.2" />
+  
+  <!-- Apples peeking through -->
+  <circle cx="150" cy="195" r="12" fill="#E63946" opacity="0.6" />
+  <circle cx="125" cy="210" r="10" fill="#D63946" opacity="0.5" />
+  <circle cx="175" cy="212" r="11" fill="#E63946" opacity="0.5" />
+  
+  <!-- Whipped cream on side -->
+  <path d="M 80 210 Q 75 190 85 180 Q 95 195 90 215" fill="#FFFAF0" opacity="0.8" />
+</svg>

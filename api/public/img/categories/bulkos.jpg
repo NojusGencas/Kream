@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="360" viewBox="0 0 300 360" fill="none">
+  <defs>
+    <linearGradient id="shadow" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#000" stop-opacity="0.15" />
+      <stop offset="1" stop-color="#000" stop-opacity="0" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="300" height="360" fill="#FEF9F3" rx="30" />
+  
+  <!-- Shadow at bottom -->
+  <ellipse cx="150" cy="320" rx="80" ry="20" fill="url(#shadow)" />
+  
+  <!-- Croissant main body -->
+  <path d="M 80 180 Q 80 120 150 100 Q 220 120 220 180 L 210 210 Q 150 190 90 210 Z" fill="#D4A574" />
+  
+  <!-- Croissant layers (lines) -->
+  <path d="M 90 140 Q 150 125 210 140" stroke="#C4935F" stroke-width="1.5" fill="none" opacity="0.6" />
+  <path d="M 95 160 Q 150 145 205 160" stroke="#C4935F" stroke-width="1.5" fill="none" opacity="0.6" />
+  <path d="M 100 175 Q 150 165 200 175" stroke="#C4935F" stroke-width="1.5" fill="none" opacity="0.6" />
+  
+  <!-- Butter shine -->
+  <ellipse cx="130" cy="140" rx="25" ry="20" fill="#F4E4C1" opacity="0.4" />
+  
+  <!-- Top curve accent -->
+  <path d="M 100 105 Q 150 85 200 105" stroke="#E8D4B0" stroke-width="2" fill="none" />
+  
+  <!-- Shadow under croissant -->
+  <ellipse cx="150" cy="215" rx="65" ry="12" fill="#000" opacity="0.08" />
+</svg>
