@@ -10,15 +10,14 @@ import * as User from "../models/user.js";
 import bcryptjs from "bcryptjs";
 
 import jwt from "jsonwebtoken";
-const JWT_SECRET = process.env.JWT_SECRET;
+const JWT_SECRET = process.env.JWT_SECRET || "super_secret_development_key_123456789_change_in_production";
 
 import passport from "passport";
 import { Strategy as JwtStrategy, ExtractJwt } from "passport-jwt";
 
-if (!JWT_SECRET) {
-  console.error("ERROR: JWT_SECRET nėra nustatytas!");
-  console.error("Render: Set JWT_SECRET in Environment Variables");
-  throw new Error("JWT_SECRET is required but not set");
+// Warn if using development secret in production
+if (process.env.NODE_ENV === 'production' && !process.env.JWT_SECRET) {
+  console.warn("⚠️  WARNING: Using development JWT_SECRET in production! Set JWT_SECRET in Environment Variables for security!");
 }
 
 // JWT autentifikacijos strategija
