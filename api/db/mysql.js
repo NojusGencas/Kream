@@ -16,4 +16,12 @@ const pool = mysql.createPool({
   keepAliveInitialDelay: 0,
 });
 
+// Handle connection errors without crashing
+pool.on('error', (err) => {
+  console.error('MySQL Pool Error:', err.message);
+  if (err.code === 'PROTOCOL_CONNECTION_LOST') console.error('Database connection was closed.');
+  if (err.code === 'PROTOCOL_ENQUEUE_AFTER_FATAL_ERROR') console.error('Database had a fatal error.');
+  if (err.code === 'PROTOCOL_ENQUEUE_AFTER_DESTROY') console.error('Database connection was destroyed.');
+});
+
 export default pool;
