@@ -1,0 +1,53 @@
+# Render.com deployment configuration
+# This file is used by Render to deploy your application
+
+services:
+  - type: web
+    name: kream-api
+    runtime: docker
+    region: oregon
+    plan: standard
+    dockerfile: ./api/Dockerfile
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: JWT_SECRET
+        sync: false
+      - key: DB_HOST
+        value: kream-mysql
+      - key: DB_USER
+        value: cakeuser
+      - key: DB_PASSWORD
+        sync: false
+      - key: DB_NAME
+        value: cakescatalog
+      - key: EMAIL_USER
+        value: nojusgencas@gmail.com
+      - key: EMAIL_PASS
+        sync: false
+    healthCheckPath: /
+    
+  - type: web
+    name: kream-front
+    runtime: docker
+    region: oregon
+    plan: standard
+    dockerfile: ./front/Dockerfile
+    envVars:
+      - key: NODE_ENV
+        value: production
+        
+  - type: web
+    name: kream-admin
+    runtime: docker
+    region: oregon
+    plan: standard
+    dockerfile: ./admin/Dockerfile
+    envVars:
+      - key: NODE_ENV
+        value: production
+        
+  - type: postgresql
+    name: kream-mysql
+    plan: standard
+    region: oregon

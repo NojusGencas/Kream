@@ -7,18 +7,18 @@ export default defineConfig({
     alias: [{ find: "@", replacement: "/src" }],
   },
   preview: {
-    port: 81,
+    port: 5173,
     host: true,
-    strictPort: true,
+    strictPort: false,
     watch: {
       usePolling: true,
     },
   },
   server: {
-    port: 81,
-    strictPort: true,
+    port: 5173,
+    strictPort: false,
     host: true,
-    origin: "http://localhost:81",
+    origin: "http://localhost:5173",
     watch: {
       usePolling: true,
     },
