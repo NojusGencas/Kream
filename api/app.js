@@ -3,9 +3,10 @@ import path from 'path';
 import indexRouter from './routes/index.js';
 import cors from 'cors';
 import { log } from 'console';
-import 'dotenv/config';
+if (process.env.NODE_ENV !== 'production') {
+  import('dotenv/config').catch(() => {});
+}
 import authRoutes from './routes/auth.js';
-const JWT_SECRET = process.env.JWT_SECRET;
 
 const app = express();
 

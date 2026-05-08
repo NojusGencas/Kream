@@ -10,14 +10,16 @@ import * as User from "../models/user.js";
 import bcryptjs from "bcryptjs";
 
 import jwt from "jsonwebtoken";
-import dotenv from "dotenv";
-dotenv.config();
-const { JWT_SECRET } = process.env;
+const JWT_SECRET = process.env.JWT_SECRET;
 
 import passport from "passport";
 import { Strategy as JwtStrategy, ExtractJwt } from "passport-jwt";
 
-if (!JWT_SECRET) throw new Error("JWT_SECRET nėra nustatytas .env faile!");
+if (!JWT_SECRET) {
+  console.error("ERROR: JWT_SECRET nėra nustatytas!");
+  console.error("Render: Set JWT_SECRET in Environment Variables");
+  throw new Error("JWT_SECRET is required but not set");
+}
 
 // JWT autentifikacijos strategija
 passport.use(
