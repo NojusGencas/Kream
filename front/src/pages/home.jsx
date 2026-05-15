@@ -1,3 +1,4 @@
+import { getApiUrl } from '../config.js';
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../context/useLanguage';
@@ -41,7 +42,7 @@ export function Home() {
   };
 
   useEffect(() => {
-    fetch('http://localhost:3000/categories')
+    fetch(getApiUrl('/categories'))
       .then((res) => res.json())
       .then((data) => {
         setCategories(data || []);

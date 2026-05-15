@@ -1,3 +1,4 @@
+import { getApiUrl } from '../config.js';
 import { useState, useEffect } from 'react';
 import { useLanguage } from '../context/useLanguage';
 
@@ -31,7 +32,7 @@ export function Uzsakymas() {
 
   // Gauti kategorijas iš DB
   useEffect(() => {
-    fetch('/api/categories')
+    fetch(getApiUrl('/api/categories'))
       .then((response) => response.json())
       .then((data) => {
         setCategories(data);
@@ -51,7 +52,7 @@ export function Uzsakymas() {
     }
 
     setLoadingProducts(true);
-    fetch(`/api/products/category/${formData.categoryId}`)
+    fetch(getApiUrl(`/api/products/category/${formData.categoryId}`))
       .then((response) => response.json())
       .then((data) => {
         setProducts(data);

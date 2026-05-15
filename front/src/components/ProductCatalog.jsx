@@ -1,3 +1,4 @@
+import { getApiUrl } from '../config.js';
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
@@ -17,7 +18,7 @@ export function ProductCatalog() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch('http://localhost:3000/products')
+    fetch(getApiUrl('/products'))
       .then((response) => response.json())
       .then((data) => {
         setProducts(data);
@@ -56,7 +57,7 @@ export function ProductCatalog() {
                   </div>
                 )}
                 <img 
-                  src={`http://localhost:3000/img/products/${product.slug}.jpg`}
+                  src={getApiUrl(`/img/products/${product.slug}.jpg`)}
                   alt={product.name}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform"
                   onError={(e) => {

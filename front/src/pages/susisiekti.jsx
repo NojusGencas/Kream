@@ -1,3 +1,4 @@
+import { getApiUrl } from '../config.js';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 

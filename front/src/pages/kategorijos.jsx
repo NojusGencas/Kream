@@ -1,3 +1,4 @@
+import { getApiUrl } from '../config.js';
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
@@ -31,7 +32,7 @@ export function Kategorijos() {
 
   // Gauti kategorijas
   useEffect(() => {
-    fetch('/api/categories')
+    fetch(getApiUrl('/api/categories'))
       .then((response) => response.json())
       .then((data) => {
         setCategories(data);
@@ -65,7 +66,7 @@ export function Kategorijos() {
   useEffect(() => {
     if (!selectedCategory) return;
 
-    fetch(`/api/products/category/${selectedCategory}`)
+    fetch(getApiUrl(`/api/products/category/${selectedCategory}`))
       .then((response) => response.json())
       .then((data) => setProducts(data))
       .catch((error) => {
@@ -130,7 +131,7 @@ export function Kategorijos() {
                   <div className="w-full h-[250px] bg-gray-200 overflow-hidden rounded-lg">
                   <span>
                       <img 
-                         src={`http://localhost:3000/img/products/${product.slug}.jpg`}
+                         src={getApiUrl(`/img/products/${product.slug}.jpg`)}
                          alt={product.name}
                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                          onError={(e) => {

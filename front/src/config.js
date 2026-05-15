@@ -1,0 +1,8 @@
+export const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
+
+export const getApiUrl = (endpoint) => {
+    if (endpoint.startsWith('http://localhost:3000')) {
+        return endpoint.replace('http://localhost:3000', API_URL);
+    }
+    return `${API_URL}${endpoint.replace(/^\/api/, '')}`;
+};

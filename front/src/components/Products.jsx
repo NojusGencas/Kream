@@ -1,3 +1,4 @@
+import { getApiUrl } from '../config.js';
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useLanguage } from "../context/useLanguage";
@@ -172,7 +173,7 @@ const Products = () => {
                 )}
                 
                 <img 
-                  src={`http://localhost:3000/img/products/${product.slug}.jpg`}
+                  src={getApiUrl(`/img/products/${product.slug}.jpg`)}
                   alt={product.name} 
                   className={`w-full h-full object-cover transition-transform duration-500 ${
                     product.is_active ? 'group-hover:scale-110' : 'grayscale'

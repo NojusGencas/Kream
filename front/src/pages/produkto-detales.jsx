@@ -1,3 +1,4 @@
+import { getApiUrl } from '../config.js';
 import { useState, useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { useLanguage } from '../context/useLanguage';
@@ -12,7 +13,7 @@ export function ProduktoDetal() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch(`/api/products/${id}`)
+    fetch(getApiUrl(`/api/products/${id}`))
       .then((response) => response.json())
       .then((data) => {
         setProduct(data);
