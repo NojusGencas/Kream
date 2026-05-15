@@ -1,4 +1,4 @@
-import { getApiUrl } from '../config.js';
+import { getApiUrl, resolveProductImage } from '../config.js';
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
@@ -57,7 +57,7 @@ export function ProductCatalog() {
                   </div>
                 )}
                 <img 
-                  src={product.main_image ? getApiUrl(product.main_image) : getApiUrl(`/img/products/${product.slug}.jpg`)}
+                  src={resolveProductImage(product.main_image, product.slug)}
                   alt={product.name}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform"
                   onError={(e) => {

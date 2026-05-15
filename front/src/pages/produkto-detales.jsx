@@ -1,4 +1,4 @@
-import { getApiUrl } from '../config.js';
+import { getApiUrl, resolveImagePath } from '../config.js';
 import { useState, useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { useLanguage } from '../context/useLanguage';
@@ -52,14 +52,10 @@ export function ProduktoDetal() {
           // Jei tik failo pavadinimas, pridėti pilną kelią
           src = '/img/products/' + src;
         }
-        return { src, alt: img.alt_text || product.name };
+        return { src: resolveImagePath(src), alt: img.alt_text || product.name };
       });
     } else if (product?.main_image) {
-      let src = product.main_image;
-      if (!src.startsWith('/') && !src.startsWith('http')) {
-        src = '/img/products/' + src;
-      }
-      return [{ src, alt: product.name }];
+      return [{ src: resolveImagePath(product.main_image), alt: product.name }];
     }
     return [];
   };

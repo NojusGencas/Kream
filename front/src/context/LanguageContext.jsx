@@ -3,7 +3,14 @@ import { translations } from './translations.js';
 import { LanguageContext } from './context.js';
 
 export function LanguageProvider({ children }) {
-  const [language, setLanguage] = useState('lt');
+  const [language, setLanguage] = useState(() => {
+    try {
+      const saved = localStorage.getItem('language');
+      return saved === 'en' || saved === 'lt' ? saved : 'lt';
+    } catch {
+      return 'lt';
+    }
+  });
 
   useEffect(() => {
     localStorage.setItem('language', language);

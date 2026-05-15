@@ -1,4 +1,4 @@
-import { getApiUrl } from '../config.js';
+import { getApiUrl, resolveImagePath } from '../config.js';
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../context/useLanguage';
@@ -128,7 +128,7 @@ export function Home() {
                 
                 <div className="relative bg-white rounded-2xl p-3 shadow-2xl">
                   <img
-                    src="/img/pagrindine.jpg"
+                    src={resolveImagePath('/img/pagrindine.jpg')}
                     alt="Skanūs tortai"
                     className="w-full h-80 md:h-96 object-cover rounded-xl"
                     onError={(e) => { 

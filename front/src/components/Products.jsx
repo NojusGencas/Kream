@@ -1,4 +1,4 @@
-import { getApiUrl } from '../config.js';
+import { getApiUrl, resolveProductImage } from '../config.js';
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useLanguage } from "../context/useLanguage";
@@ -54,7 +54,7 @@ const Products = () => {
 
   // Filtruoti ir rūšiuoti produktus
   const filteredProducts = products
-    .filter(product => selectedCategory === 'all' || product.categories_id === Number(selectedCategory))
+    .filter(product => selectedCategory === 'all' || product.category_id === Number(selectedCategory))
     .sort((a, b) => {
       switch (sortBy) {
         case 'newest':
@@ -177,7 +177,7 @@ const Products = () => {
                 )}
                 
                 <img 
-                  src={product.main_image ? getApiUrl(product.main_image) : getApiUrl(`/img/products/${product.slug}.jpg`)}
+                  src={resolveProductImage(product.main_image, product.slug)}
                   alt={product.name} 
                   className={`w-full h-full object-cover transition-transform duration-500 ${
                     product.is_active ? 'group-hover:scale-110' : 'grayscale'
