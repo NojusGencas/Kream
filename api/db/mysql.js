@@ -6,6 +6,9 @@ const pool = mysql.createPool({
   password: process.env.DB_PASSWORD || 'root',
   database: process.env.DB_NAME || 'cakescatalog',
   port: process.env.DB_PORT || 3306,
+  ssl: process.env.DB_HOST && process.env.DB_HOST.includes('aivencloud.com') ? {
+    rejectUnauthorized: false
+  } : undefined,
 
   waitForConnections: true,
   connectionLimit: 20,
