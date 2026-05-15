@@ -1,3 +1,4 @@
+import { buildApiUrl } from '../../../utils/api.js';
 import { PencilIcon } from "@heroicons/react/24/solid";
 import {
   Typography,
@@ -23,7 +24,7 @@ export function UserListItem({userData, isLast, setError, setRows, roleList}) {
     try {
       // setError(null);
 
-      const res = await fetch(`/api/users/${userId}/role`, {
+      const res = await fetch(buildApiUrl(`/api/users/${userId}/role`), {
         method: "PATCH",
         headers: { 
           "Content-Type": "application/json",
@@ -66,7 +67,7 @@ export function UserListItem({userData, isLast, setError, setRows, roleList}) {
     try {
       setError(null);
 
-      const res = await fetch(`/api/users/${userId}/status`, {
+      const res = await fetch(buildApiUrl(`/api/users/${userId}/status`), {
         method: "PATCH",
         headers: { 
           "Content-Type": "application/json",

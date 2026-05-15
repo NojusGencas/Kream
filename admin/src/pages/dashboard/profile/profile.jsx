@@ -1,3 +1,4 @@
+import { buildApiUrl } from '../../../utils/api.js';
 import {
   Card,
   CardBody,
@@ -33,7 +34,7 @@ export function Profile() {
     }
 
     try {
-      const res = await fetch(`/api/users/${user.id}/password`, {
+      const res = await fetch(buildApiUrl(`/api/users/${user.id}/password`), {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",

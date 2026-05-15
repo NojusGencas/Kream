@@ -1,3 +1,4 @@
+import { buildApiUrl } from '../../utils/api.js';
 import React, { useState, useContext, useEffect } from "react";
 import {
   Card,
@@ -33,7 +34,7 @@ export function SignIn() {
     hideAllAlerts();
 
     try {
-      const res = await fetch("/api/login", {
+      const res = await fetch(buildApiUrl('/api/login'), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),

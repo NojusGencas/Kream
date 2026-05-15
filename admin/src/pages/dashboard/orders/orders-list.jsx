@@ -1,3 +1,4 @@
+import { buildApiUrl } from '../../../utils/api.js';
 import React, { useEffect, useState, useContext } from "react";
 import {
   Card,
@@ -78,7 +79,7 @@ export function OrdersList() {
 
   const fetchOrders = async () => {
     try {
-      const res = await fetch("/api/orders", {
+      const res = await fetch(buildApiUrl('/api/orders'), {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -95,7 +96,7 @@ export function OrdersList() {
 
   const handleStatusChange = async (orderId, newStatus) => {
     try {
-      const res = await fetch(`/api/orders/${orderId}/status`, {
+      const res = await fetch(buildApiUrl(`/api/orders/${orderId}/status`), {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -117,7 +118,7 @@ export function OrdersList() {
     if (!selectedOrder) return;
 
     try {
-      const res = await fetch(`/api/orders/${selectedOrder.id}`, {
+      const res = await fetch(buildApiUrl(`/api/orders/${selectedOrder.id}`), {
         method: "DELETE",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -138,7 +139,7 @@ export function OrdersList() {
   const handleDeleteCompleted = async () => {
     setDeletingCompleted(true);
     try {
-      const res = await fetch(`/api/orders/status/completed`, {
+      const res = await fetch(buildApiUrl(`/api/orders/status/completed`), {
         method: "DELETE",
         headers: {
           Authorization: `Bearer ${token}`,

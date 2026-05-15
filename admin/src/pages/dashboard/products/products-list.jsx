@@ -1,3 +1,4 @@
+import { buildApiUrl } from '../../../utils/api.js';
 import React, { useEffect, useState, useContext } from "react";
 import {
   Card,
@@ -71,7 +72,7 @@ export function ProductsList() {
 
   const fetchProducts = async () => {
     try {
-      const res = await fetch("/api/products");
+      const res = await fetch(buildApiUrl('/api/products'));
       const data = await res.json();
       setProducts(data);
     } catch (err) {
@@ -83,7 +84,7 @@ export function ProductsList() {
 
   const fetchCategories = async () => {
     try {
-      const res = await fetch("/api/categories");
+      const res = await fetch(buildApiUrl('/api/categories'));
       const data = await res.json();
       setCategories(data);
     } catch (err) {
@@ -93,7 +94,7 @@ export function ProductsList() {
 
   const fetchProductImages = async (productId) => {
     try {
-      const res = await fetch(`/api/products/${productId}`);
+      const res = await fetch(buildApiUrl(`/api/products/${productId}`));
       const data = await res.json();
       setProductImages(data.images || []);
     } catch (err) {
@@ -175,7 +176,7 @@ export function ProductsList() {
         : "/api/products";
       const method = editingProduct ? "PUT" : "POST";
 
-      const res = await fetch(url, {
+      const res = await fetch(buildApiUrl(url), {
         method,
         headers: {
           "Content-Type": "application/json",
@@ -202,7 +203,7 @@ export function ProductsList() {
 
   const handleToggleActive = async (product) => {
     try {
-      const res = await fetch(`/api/products/${product.id}/toggle-active`, {
+      const res = await fetch(buildApiUrl(`/api/products/${product.id}/toggle-active`), {
         method: "PATCH",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -222,7 +223,7 @@ export function ProductsList() {
     if (!deletingProduct) return;
 
     try {
-      const res = await fetch(`/api/products/${deletingProduct.id}`, {
+      const res = await fetch(buildApiUrl(`/api/products/${deletingProduct.id}`), {
         method: "DELETE",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -252,7 +253,7 @@ export function ProductsList() {
       formData.append("is_main", productImages.length === 0 && i === 0 ? "true" : "false");
 
       try {
-        const res = await fetch(`/api/products/${imageProduct.id}/images`, {
+        const res = await fetch(buildApiUrl(`/api/products/${imageProduct.id}/images`), {
           method: "POST",
           headers: {
             Authorization: `Bearer ${token}`,
@@ -282,7 +283,7 @@ export function ProductsList() {
     if (!imageProduct) return;
 
     try {
-      const res = await fetch(`/api/products/${imageProduct.id}/images/${imageId}`, {
+      const res = await fetch(buildApiUrl(`/api/products/${imageProduct.id}/images/${imageId}`), {
         method: "DELETE",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -303,7 +304,7 @@ export function ProductsList() {
     if (!imageProduct) return;
 
     try {
-      const res = await fetch(`/api/products/${imageProduct.id}/images/${imageId}/main`, {
+      const res = await fetch(buildApiUrl(`/api/products/${imageProduct.id}/images/${imageId}/main`), {
         method: "PUT",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -409,8 +410,8 @@ export function ProductsList() {
                         {product.main_image ? (
                           <img
                             src={product.main_image.startsWith('/') || product.main_image.startsWith('http') 
-                              ? `http://localhost:3000${product.main_image.startsWith('/') ? '' : '/img/products/'}${product.main_image}`
-                              : `http://localhost:3000/img/products/${product.main_image}`}
+                              ? buildApiUrl(`${product.main_image.startsWith('/') ? '' : '/img/products/'}${product.main_image}`)
+                              : buildApiUrl(`/img/products/${product.main_image}`)}
                             alt={product.name}
                             className="w-full h-full object-cover"
                           />
@@ -681,8 +682,8 @@ export function ProductsList() {
                 >
                   <img
                     src={image.image_path.startsWith('/') || image.image_path.startsWith('http')
-                      ? `http://localhost:3000${image.image_path.startsWith('/') ? '' : '/img/products/'}${image.image_path}`
-                      : `http://localhost:3000/img/products/${image.image_path}`}
+                      ? buildApiUrl(`${image.image_path.startsWith('/') ? '' : '/img/products/'}${image.image_path}`)
+                      : buildApiUrl(`/img/products/${image.image_path}`)}
                     alt="Produkto nuotrauka"
                     className="w-full h-32 object-cover"
                   />

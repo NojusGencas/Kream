@@ -1,3 +1,4 @@
+import { buildApiUrl } from '../../../utils/api.js';
 import React, { useEffect, useState, useContext } from "react";
 import {
   Card,
@@ -61,7 +62,7 @@ export function CategoriesList() {
 
   const fetchCategories = async () => {
     try {
-      const res = await fetch("/api/categories");
+      const res = await fetch(buildApiUrl('/api/categories'));
       const data = await res.json();
       setCategories(data);
     } catch (err) {
@@ -121,7 +122,7 @@ export function CategoriesList() {
         : "/api/categories";
       const method = editingCategory ? "PUT" : "POST";
 
-      const res = await fetch(url, {
+      const res = await fetch(buildApiUrl(url), {
         method,
         headers: {
           "Content-Type": "application/json",
@@ -152,7 +153,7 @@ export function CategoriesList() {
     if (!deletingCategory) return;
 
     try {
-      const res = await fetch(`/api/categories/${deletingCategory.id}`, {
+      const res = await fetch(buildApiUrl(`/api/categories/${deletingCategory.id}`), {
         method: "DELETE",
         headers: {
           Authorization: `Bearer ${token}`,

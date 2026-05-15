@@ -1,3 +1,4 @@
+import { buildApiUrl } from '../../utils/api.js';
 import React, { useEffect, useState, useContext } from "react";
 import {
   Typography,
@@ -35,7 +36,7 @@ export function Dashboard() {
 
   const fetchStats = async () => {
     try {
-      const res = await fetch("/api/stats", {
+      const res = await fetch(buildApiUrl('/api/stats'), {
         headers: {
           Authorization: `Bearer ${token}`,
         },

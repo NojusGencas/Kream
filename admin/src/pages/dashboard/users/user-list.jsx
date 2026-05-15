@@ -1,3 +1,4 @@
+import { buildApiUrl } from '../../../utils/api.js';
 import { useEffect, useMemo, useState, useContext } from "react";
 import {
   MagnifyingGlassIcon,
@@ -69,7 +70,7 @@ export function UserList() {
   const fetchUsers = async () => {
     try {
       setLoading(true);
-      const res = await fetch("/api/users", {
+      const res = await fetch(buildApiUrl('/api/users'), {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
@@ -102,7 +103,7 @@ export function UserList() {
 
   const handleRoleChange = async (userId, newRole) => {
     try {
-      const res = await fetch(`/api/users/${userId}/role`, {
+      const res = await fetch(buildApiUrl(`/api/users/${userId}/role`), {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
@@ -124,7 +125,7 @@ export function UserList() {
 
   const handleStatusChange = async (userId, newStatus) => {
     try {
-      const res = await fetch(`/api/users/${userId}/status`, {
+      const res = await fetch(buildApiUrl(`/api/users/${userId}/status`), {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
@@ -147,7 +148,7 @@ export function UserList() {
   const handleDelete = async () => {
     if (!deletingUser) return;
     try {
-      const res = await fetch(`/api/users/${deletingUser.id}`, {
+      const res = await fetch(buildApiUrl(`/api/users/${deletingUser.id}`), {
         method: "DELETE",
         headers: { Authorization: `Bearer ${token}` },
       });
@@ -181,7 +182,7 @@ export function UserList() {
 
     setEditLoading(true);
     try {
-      const res = await fetch(`/api/users/${editingUser.id}/email`, {
+      const res = await fetch(buildApiUrl(`/api/users/${editingUser.id}/email`), {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
@@ -218,7 +219,7 @@ export function UserList() {
 
     setEditLoading(true);
     try {
-      const res = await fetch(`/api/users/${editingUser.id}/reset-password`, {
+      const res = await fetch(buildApiUrl(`/api/users/${editingUser.id}/reset-password`), {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",

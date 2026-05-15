@@ -1,3 +1,4 @@
+import { buildApiUrl } from '../../utils/api.js';
 import React from "react";
 import {
   Button,
@@ -21,7 +22,7 @@ export function DialogForgotPassword() {
     setMessage(null);
     setLoading(true);
     try {
-      const res = await fetch("/api/password-reset", {
+      const res = await fetch(buildApiUrl('/api/password-reset'), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email }),

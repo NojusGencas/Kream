@@ -1,3 +1,4 @@
+import { buildApiUrl } from '../../utils/api.js';
 import { useState, useContext } from "react";
 import {
   Typography,
@@ -68,7 +69,7 @@ export function SignUp() {
     setLoading(true);
 
     try {
-      const res = await fetch("/api/register", {
+      const res = await fetch(buildApiUrl('/api/register'), {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
