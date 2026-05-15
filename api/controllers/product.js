@@ -32,7 +32,7 @@ export const show = async (req, res, next) => {
 
 // POST /products
 export const store = async (req, res, next) => {
-  if (!req.body.name || !req.body.categories_id) {
+  if (!req.body.name || !req.body.category_id) {
     return res.status(400).json({ message: "Trūksta duomenų" });
   }
 
@@ -47,7 +47,7 @@ export const store = async (req, res, next) => {
 
 // PUT /products/:id
 export const update = async (req, res, next) => {
-  if (!req.body.name || !req.body.categories_id) {
+  if (!req.body.name || !req.body.category_id) {
     return res.status(400).json({ message: "Trūksta duomenų" });
   }
 

@@ -131,7 +131,7 @@ export function Kategorijos() {
                   <div className="w-full h-[250px] bg-gray-200 overflow-hidden rounded-lg">
                   <span>
                       <img 
-                         src={getApiUrl(`/img/products/${product.slug}.jpg`)}
+                         src={product.main_image ? getApiUrl(product.main_image) : getApiUrl(`/img/products/${product.slug}.jpg`)}
                          alt={product.name}
                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                          onError={(e) => {

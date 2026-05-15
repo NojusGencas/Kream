@@ -55,7 +55,11 @@ export function Uzsakymas() {
     fetch(getApiUrl(`/api/products/category/${formData.categoryId}`))
       .then((response) => response.json())
       .then((data) => {
-        setProducts(data);
+        if (Array.isArray(data)) {
+          setProducts(data);
+        } else {
+          setProducts([]);
+        }
         setLoadingProducts(false);
       })
       .catch((error) => {

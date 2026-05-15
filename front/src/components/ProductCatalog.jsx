@@ -57,7 +57,7 @@ export function ProductCatalog() {
                   </div>
                 )}
                 <img 
-                  src={getApiUrl(`/img/products/${product.slug}.jpg`)}
+                  src={product.main_image ? getApiUrl(product.main_image) : getApiUrl(`/img/products/${product.slug}.jpg`)}
                   alt={product.name}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform"
                   onError={(e) => {

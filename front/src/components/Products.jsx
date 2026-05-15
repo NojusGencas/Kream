@@ -37,7 +37,11 @@ const Products = () => {
       fetch(getApiUrl('/api/categories')).then(res => res.json())
     ])
       .then(([productsData, categoriesData]) => {
-        setProducts(productsData);
+        if (Array.isArray(productsData)) {
+          setProducts(productsData);
+        } else {
+          setProducts([]);
+        }
         setCategories(categoriesData);
         setLoading(false);
       })
@@ -173,13 +177,13 @@ const Products = () => {
                 )}
                 
                 <img 
-                  src={getApiUrl(`/img/products/${product.slug}.jpg`)}
+                  src={product.main_image ? getApiUrl(product.main_image) : getApiUrl(`/img/products/${product.slug}.jpg`)}
                   alt={product.name} 
                   className={`w-full h-full object-cover transition-transform duration-500 ${
                     product.is_active ? 'group-hover:scale-110' : 'grayscale'
                   }`}
                   onError={(e) => {
-                    e.target.src = 'https://via.placeholder.com/400x300?text=🍰';
+                    e.target.src = 'https://placehold.co/400x300/f5f5f4/a8a29e?text=Kream';
                   }} 
                 />
                 {product.is_active && (

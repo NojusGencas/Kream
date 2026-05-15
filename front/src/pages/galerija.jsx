@@ -87,7 +87,7 @@ export function Galerija() {
                   alt={`Tortas ${image.id}`}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                   onError={(e) => {
-                    e.target.src = `https://via.placeholder.com/400x400/f5f5f4/a8a29e?text=🎂`;
+                    e.target.src = 'https://placehold.co/400x300/f5f5f4/a8a29e?text=Kream';
                   }}
                 />
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center">
@@ -170,7 +170,7 @@ export function Galerija() {
               alt="Tortas"
               className="w-full h-full object-contain rounded-lg"
               onError={(e) => {
-                e.target.src = `https://via.placeholder.com/800x600/f5f5f4/a8a29e?text=🎂`;
+                e.target.src = 'https://placehold.co/400x300/f5f5f4/a8a29e?text=Kream';
               }}
             />
             

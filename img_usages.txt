@@ -1,0 +1,19 @@
+front/src/components/Footer.jsx:19:                src="/img/logo.jpg" 
+front/src/components/Header.jsx:18:              src="/img/logo.jpg" 
+front/src/components/ProductCatalog.jsx:60:                  src={getApiUrl(`/img/products/${product.slug}.jpg`)}
+front/src/components/Products.jsx:180:                  src={getApiUrl(`/img/products/${product.slug}.jpg`)}
+front/src/pages/apie-mus.jsx:85:                    src="/img/pagrindine.jpg"
+front/src/pages/galerija.jsx:10:    { id: 1, src: '/img/gallery/tortas1.jpg' },
+front/src/pages/galerija.jsx:11:    { id: 2, src: '/img/gallery/tortas2.jpg' },
+front/src/pages/galerija.jsx:12:    { id: 3, src: '/img/gallery/tortas3.jpg' },
+front/src/pages/galerija.jsx:13:    { id: 4, src: '/img/gallery/tortas4.jpg' },
+front/src/pages/galerija.jsx:14:    { id: 5, src: '/img/gallery/tortas5.jpg' },
+front/src/pages/galerija.jsx:15:    { id: 6, src: '/img/gallery/tortas6.jpg' },
+front/src/pages/galerija.jsx:16:    { id: 7, src: '/img/gallery/tortas7.jpg' },
+front/src/pages/galerija.jsx:17:    { id: 8, src: '/img/gallery/tortas8.jpg' },
+front/src/pages/galerija.jsx:18:    { id: 9, src: '/img/gallery/tortas9.jpg' },
+front/src/pages/galerija.jsx:19:    { id: 10, src: '/img/gallery/tortas10.jpg' },
+front/src/pages/galerija.jsx:20:    { id: 11, src: '/img/gallery/tortas11.jpg' },
+front/src/pages/galerija.jsx:21:    { id: 12, src: '/img/gallery/tortas12.jpg' }
+front/src/pages/home.jsx:131:                    src="/img/pagrindine.jpg"
+front/src/pages/kategorijos.jsx:134:                         src={getApiUrl(`/img/products/${product.slug}.jpg`)}

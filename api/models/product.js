@@ -45,7 +45,7 @@ export const selectById = async (id) => {
 export const selectByCategory = async (categoryId) => {
   try {
     const [rows] = await db.query(
-      `SELECT * FROM ${tableName} WHERE categories_id = ? ORDER BY is_active DESC, sort_order ASC`,
+      `SELECT * FROM ${tableName} WHERE category_id = ? ORDER BY is_active DESC, sort_order ASC`,
       [categoryId]
     );
     return rows;
@@ -85,9 +85,9 @@ export const selectByIdWithImages = async (id) => {
 export async function insert(data) {
   try {
     const [result] = await db.query(
-      `INSERT INTO ${tableName} (categories_id, name, slug, description, price_per_kg, sort_order, publish_date, is_active) 
+      `INSERT INTO ${tableName} (category_id, name, slug, description, price_per_kg, sort_order, publish_date, is_active) 
        VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
-      [data.categories_id, data.name, data.slug, data.description || '', data.price_per_kg || 0, data.sort_order || 0, data.publish_date || new Date().toISOString().split('T')[0], data.is_active || 1]
+      [data.category_id, data.name, data.slug, data.description || '', data.price_per_kg || 0, data.sort_order || 0, data.publish_date || new Date().toISOString().split('T')[0], data.is_active || 1]
     );
     return result.insertId;
   } catch (err) {
@@ -99,8 +99,8 @@ export async function insert(data) {
 export async function update(id, data) {
   try {
     const [result] = await db.query(
-      `UPDATE ${tableName} SET categories_id = ?, name = ?, slug = ?, description = ?, price_per_kg = ?, sort_order = ?, is_active = ? WHERE id = ?`,
-      [data.categories_id, data.name, data.slug, data.description || '', data.price_per_kg || 0, data.sort_order || 0, data.is_active, id]
+      `UPDATE ${tableName} SET category_id = ?, name = ?, slug = ?, description = ?, price_per_kg = ?, sort_order = ?, is_active = ? WHERE id = ?`,
+      [data.category_id, data.name, data.slug, data.description || '', data.price_per_kg || 0, data.sort_order || 0, data.is_active, id]
     );
     return result.affectedRows > 0;
   } catch (err) {
