@@ -44,6 +44,7 @@ function App() {
             <Route path='/' element={<Home/>}/>
             <Route path='/produktai' element={<Produktai/>}/>
             <Route path='/produkto-detales/:id' element={<ProduktoDetal/>}/>
+            <Route path='/products/:id' element={<ProduktoDetal/>}/>
             <Route path='/galerija' element={<Galerija/>}/>
             <Route path='/apie-mus' element={<ApieMus/>}/>
             <Route path='/uzsakymas' element={<Uzsakymas/>}/>

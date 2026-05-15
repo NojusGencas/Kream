@@ -1,7 +1,11 @@
+function normalizeApiBase(url) {
+  let base = String(url || 'https://api-rjrt.onrender.com').trim();
+  if (!/^https?:\/\//i.test(base)) base = `https://${base}`;
+  return base.replace(/\/+$/, '').replace(/\/api$/i, '');
+}
+
 /** API base without trailing slash or /api suffix (Render serves /categories not /api/categories) */
-export const API_URL = (import.meta.env.VITE_API_URL || 'https://api-rjrt.onrender.com')
-  .replace(/\/+$/, '')
-  .replace(/\/api$/i, '');
+export const API_URL = normalizeApiBase(import.meta.env.VITE_API_URL);
 
 export const getApiUrl = (endpoint) => {
   if (!endpoint) return API_URL;
@@ -18,7 +22,9 @@ export const getApiUrl = (endpoint) => {
   const result = `${API_URL}${path}`;
 
   // #region agent log
-  fetch('http://127.0.0.1:7629/ingest/bdf171ee-e641-45e8-80db-cc12fa2b804f',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'7e2fdd'},body:JSON.stringify({sessionId:'7e2fdd',runId:'post-fix',location:'config.js:getApiUrl',message:'getApiUrl',data:{endpoint,result,apiUrl:API_URL},timestamp:Date.now(),hypothesisId:'H1-H3'})}).catch(()=>{});
+  if (!result.includes('://') || /\.com[^/]/.test(result)) {
+    fetch('http://127.0.0.1:7330/ingest/843a7127-9b3a-4140-a459-ab85c801be2f',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'7e2fdd'},body:JSON.stringify({sessionId:'7e2fdd',runId:'post-fix',location:'config.js:getApiUrl',message:'invalid url built',data:{endpoint,result,apiUrl:API_URL},timestamp:Date.now(),hypothesisId:'H1-H3'})}).catch(()=>{});
+  }
   // #endregion
 
   return result;
@@ -38,6 +44,7 @@ export function resolveImagePath(imagePath) {
   if (!imagePath) return '';
   if (imagePath.startsWith('http')) return imagePath;
   let path = imagePath;
+  path = path.replace(/^\/images\/products/, '/img/products');
   if (path.startsWith('img/')) path = `/${path}`;
   else if (!path.startsWith('/')) path = `/img/products/${path}`;
   return getApiUrl(path);

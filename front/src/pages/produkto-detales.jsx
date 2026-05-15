@@ -11,6 +11,8 @@ export function ProduktoDetal() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [mainImageFailed, setMainImageFailed] = useState(false);
+  const [failedThumbIndices, setFailedThumbIndices] = useState(() => new Set());
 
   useEffect(() => {
     fetch(getApiUrl(`/api/products/${id}`))
@@ -61,6 +63,16 @@ export function ProduktoDetal() {
   };
 
   const images = product ? getImages() : [];
+
+  useEffect(() => {
+    setMainImageFailed(false);
+    setFailedThumbIndices(new Set());
+    setCurrentImageIndex(0);
+  }, [product?.id]);
+
+  const markThumbFailed = (index) => {
+    setFailedThumbIndices((prev) => new Set(prev).add(index));
+  };
 
   const nextImage = () => {
     setCurrentImageIndex((prev) => (prev + 1) % images.length);
@@ -144,17 +156,13 @@ export function ProduktoDetal() {
                 </div>
               )}
 
-              {images.length > 0 ? (
+              {images.length > 0 && !mainImageFailed ? (
                 <div className="relative w-full h-full">
                   <img
                     src={images[currentImageIndex]?.src}
                     alt={images[currentImageIndex]?.alt}
                     className="w-full h-full object-cover"
-                    onError={(e) => {
-                      e.target.src = '';
-                      e.target.style.display = 'none';
-                      e.target.parentElement.innerHTML = '<div class="w-full h-full flex items-center justify-center bg-gradient-to-br from-amber-100 to-orange-100"><span class="text-8xl">🎂</span></div>';
-                    }}
+                    onError={() => setMainImageFailed(true)}
                   />
 
                   {images.length > 1 && (
@@ -201,15 +209,18 @@ export function ProduktoDetal() {
                         : 'ring-2 ring-stone-200 hover:ring-amber-300 opacity-70 hover:opacity-100'
                     }`}
                   >
-                    <img
-                      src={image.src}
-                      alt={image.alt}
-                      className="w-full h-full object-cover"
-                      onError={(e) => {
-                        e.target.style.display = 'none';
-                        e.target.parentElement.innerHTML = '<div class="w-full h-full flex items-center justify-center bg-amber-100"><span class="text-2xl">🎂</span></div>';
-                      }}
-                    />
+                    {failedThumbIndices.has(index) ? (
+                      <div className="w-full h-full flex items-center justify-center bg-amber-100">
+                        <span className="text-2xl">🎂</span>
+                      </div>
+                    ) : (
+                      <img
+                        src={image.src}
+                        alt={image.alt}
+                        className="w-full h-full object-cover"
+                        onError={() => markThumbFailed(index)}
+                      />
+                    )}
                   </button>
                 ))}
               </div>
