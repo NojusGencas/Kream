@@ -20,7 +20,7 @@ export function Susisiekti() {
   const handleSubmit = (e) => {
     e.preventDefault();
     // Send to backend
-    fetch('/api/contact', {
+    fetch(getApiUrl('/api/contact'), {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

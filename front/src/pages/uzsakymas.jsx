@@ -92,7 +92,7 @@ export function Uzsakymas() {
     const totalPrice = selectedProduct && formData.weight ? (selectedProduct.price_per_kg * parseFloat(formData.weight)).toFixed(2) : 0;
     
     // Siųsti į orders API
-    fetch('/api/orders', {
+    fetch(getApiUrl('/api/orders'), {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

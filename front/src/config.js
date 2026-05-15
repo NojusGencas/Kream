@@ -1,4 +1,4 @@
-export const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
+export const API_URL = import.meta.env.VITE_API_URL || 'https://api-rjrt.onrender.com';
 
 export const getApiUrl = (endpoint) => {
     if (endpoint.startsWith('http://localhost:3000')) {

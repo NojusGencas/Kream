@@ -33,8 +33,8 @@ const Products = () => {
 
   useEffect(() => {
     Promise.all([
-      fetch("/api/products").then(res => res.json()),
-      fetch("/api/categories").then(res => res.json())
+      fetch(getApiUrl('/api/products')).then(res => res.json()),
+      fetch(getApiUrl('/api/categories')).then(res => res.json())
     ])
       .then(([productsData, categoriesData]) => {
         setProducts(productsData);
