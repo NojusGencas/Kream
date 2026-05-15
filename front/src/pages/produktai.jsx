@@ -1,6 +1,6 @@
 import Products from '../components/Products'
 import { Link } from 'react-router-dom'
-import { useLanguage } from '../context/LanguageContext'
+import { useLanguage } from '../context/useLanguage'
 
 export function Produktai() {
     const { t } = useLanguage();
